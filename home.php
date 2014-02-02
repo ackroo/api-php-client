@@ -4,14 +4,13 @@ require 'ackroo.php';
 require 'defs.php';
 session_start();
 
-// if they posted the form with the shop name
 if ($_SERVER['REQUEST_METHOD']== "POST") {
 
 	$sc = new AckrooClient($api, $_SESSION['access_token'], $app_id, $secret);
 
     try
     {
-        // Get all products
+        // Call Cardholder API Alive
         $result = $sc->call('GET', 'cardholder/root');
     }
     catch (AckrooApiException $e)

@@ -4,9 +4,11 @@ require 'ackroo.php';
 require 'defs.php';
 session_start();
 
-if ($_SESSION['access_token'] != '') {
-	header("Location: home.php");
-	exit;       
+if (isset($_SESSION['access_token'])) {
+	if ($_SESSION['access_token'] != '') {
+		header("Location: home.php");
+		exit;
+	}
 }
 if (isset($_GET['code'])) { // if the code param has been sent to this page... we are in Step 2
 	// Step 2: do a form POST to get the access token
